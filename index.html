@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis Alvarez | Chief Technical Architect & Cybersecurity Director</title>
+    <title>Luis Alvarez | Lead SysAdmin & Technical Architect</title>
     <!-- Iconos profesionales Tabler Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,7 +83,7 @@
         .nav-right { display: flex; align-items: center; gap: 1.2rem; font-size: 1.2rem; color: var(--text-main); }
         .nav-right a:hover { color: var(--accent-cyan); transform: translateY(-2px); }
 
-        /* Hero Section sin espacios desperdiciados */
+        /* Hero Section */
         .hero {
             position: relative;
             z-index: 1;
@@ -160,7 +160,7 @@
         .cursor-blink { display: inline-block; width: 8px; height: 14px; background: var(--accent-cyan); margin-left: 4px; vertical-align: middle; animation: blink 1s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* Grid de Métricas Top Enterprise */
+        /* Grid de Métricas Reales */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -201,7 +201,7 @@
         .btn-secondary { background: rgba(8, 15, 30, 0.9); color: var(--text-main); border: 1px solid var(--border-color); }
         .btn-secondary:hover { border-color: var(--accent-cyan); background: rgba(0, 240, 255, 0.1); }
 
-        /* Foto Cyber frame */
+        /* Foto Cyber frame con Filtro de Iluminación */
         .hero-right { display: flex; justify-content: center; position: relative; }
         .profile-frame { position: relative; width: 290px; height: 380px; }
         .profile-frame::before {
@@ -222,7 +222,11 @@
             z-index: 2;
             border: 1px solid var(--border-color);
             background-color: #080f1e;
-            filter: grayscale(15%) contrast(110%);
+            filter: brightness(130%) contrast(90%) saturate(85%) hue-rotate(-5deg);
+            transition: all 0.5s ease;
+        }
+        .profile-frame:hover .avatar {
+            filter: brightness(135%) contrast(95%) saturate(100%);
         }
 
         /* Secciones principales */
@@ -233,7 +237,7 @@
         .section-title span { color: var(--accent-cyan); }
         .section-subtitle { color: #64748b; font-size: 0.9rem; margin-top: 0.3rem; font-family: var(--font-mono); }
 
-        /* Grid de 6 Cards Gigante */
+        /* Grid de 6 Cards */
         .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
         .tech-card {
             background: var(--card-bg);
@@ -324,7 +328,7 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#inicio">// Inicio</a></li>
-                <li><a href="#capacidades">// Enterprise_Stack</a></li>
+                <li><a href="#capacidades">// Stack_Técnico</a></li>
                 <li><a href="#certificaciones">// Cumplimiento</a></li>
                 <li><a href="#contacto">// Contacto</a></li>
             </ul>
@@ -339,12 +343,12 @@
     <section id="inicio">
         <div class="hero">
             <div class="hero-left">
-                <div class="hero-tag"><i class="ti ti-shield-code"></i> Chief Technical Architect & DevSecOps Director</div>
+                <div class="hero-tag"><i class="ti ti-shield-code"></i> Lead SysAdmin & Technical Architect</div>
                 <h1 class="hero-title">Luis <span>Alvarez</span></h1>
-                <div class="hero-subtitle">Enterprise Multicloud <span>•</span> DevSecOps <span>•</span> SOC/SIEM <span>•</span> Core Systems</div>
+                <div class="hero-subtitle">Cloud Multicloud <span>•</span> Ciberseguridad <span>•</span> SQL & IIS <span>•</span> Python/C#</div>
                 
                 <p class="hero-text">
-                    Arquitecto de Sistemas e Infraestructura de Alto Rendimiento. Especialista en orquestación DevSecOps, clusterización de Bases de Datos SQL, ingeniería de servidores Web/IIS y ciberseguridad ofensiva/defensiva.
+                    Especialista en Orquestación de Infraestructura Crítica, Administración Multicloud y Hardening de Seguridad. Garantizo alta disponibilidad en entornos empresariales complejos.
                 </p>
 
                 <!-- Consola Viva Simulated -->
@@ -354,35 +358,34 @@
                         <div class="dot dot-yellow"></div>
                         <div class="dot dot-green"></div>
                     </div>
-                    <div class="terminal-line"><span>root@enterprise-cluster:~#</span> systemctl status infrastructure.service</div>
-                    <div class="terminal-line">> AWS / Azure / IONOS / GCP: <span style="color:#00ff66;">[ONLINE 99.999%]</span></div>
-                    <div class="terminal-line">> Kubernetes / Docker Clusters: <span style="color:#00ff66;">[HEALTHY - 0 LATENCY]</span></div>
-                    <div class="terminal-line">> IIS Web Apps & SQL Clusters: <span style="color:#00ff66;">[SYNCHRONIZED]</span></div>
-                    <div class="terminal-line">> SIEM / SOC Firewalls / MICR ANSI: <span style="color:#00ff66;">[ZERO THREATS]</span><span class="cursor-blink"></span></div>
+                    <div class="terminal-line"><span>root@sysadmin-node:~#</span> systemctl status infrastructure.service</div>
+                    <div class="terminal-line">> AWS / Azure / IONOS Cloud: <span style="color:#00ff66;">[ONLINE 99.9%]</span></div>
+                    <div class="terminal-line">> IIS Web Apps & SQL Server: <span style="color:#00ff66;">[OPERATIONAL]</span></div>
+                    <div class="terminal-line">> Firewalls & MICR Security: <span style="color:#00ff66;">[HARDENED / ACTIVE]</span><span class="cursor-blink"></span></div>
                 </div>
 
-                <!-- Métricas Impactantes Enterprise -->
+                <!-- Métricas Reales -->
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-number">+10<span>PB</span></div>
-                        <div class="stat-label">Data Procesada</div>
+                        <div class="stat-number">+15<span>Años</span></div>
+                        <div class="stat-label">Experiencia TI</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">99.999<span>%</span></div>
-                        <div class="stat-label">Uptime Garantizado</div>
+                        <div class="stat-number">99.9<span>%</span></div>
+                        <div class="stat-label">Uptime Objetivo</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">+5k<span></span></div>
-                        <div class="stat-label">Endpoints Protegidos</div>
+                        <div class="stat-number">+500<span></span></div>
+                        <div class="stat-label">Equipos Administrados</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">Dev<span>Ops</span></div>
-                        <div class="stat-label">CI/CD Pipelines</div>
+                        <div class="stat-number">MICR<span>Sec</span></div>
+                        <div class="stat-label">Especialidad ANSI</div>
                     </div>
                 </div>
 
                 <div class="btn-group">
-                    <a href="#capacidades" class="btn btn-primary"><i class="ti ti-cpu"></i> Explora Mi Stack Enterprise</a>
+                    <a href="#capacidades" class="btn btn-primary"><i class="ti ti-cpu"></i> Explora Mi Stack Técnico</a>
                     <a href="#contacto" class="btn btn-secondary"><i class="ti ti-mail"></i> Contacto Directo</a>
                 </div>
             </div>
@@ -395,111 +398,110 @@
         </div>
     </section>
 
-    <!-- Stack Enterprise Extendido (6 Módulos completos) -->
+    <!-- Stack Técnico Completo -->
     <section id="capacidades">
         <div class="section-inner">
             <div class="section-header">
                 <h2 class="section-title">Arquitectura <span>& Stack Tecnológico</span></h2>
-                <p class="section-subtitle">// Infraestructura distribuida, orquestación, código y ciberseguridad avanzada</p>
+                <p class="section-subtitle">// Infraestructura, despliegue, bases de datos y ciberseguridad</p>
             </div>
 
             <div class="grid-cards">
                 <!-- Card 1 -->
                 <div class="tech-card">
                     <div class="card-icon"><i class="ti ti-cloud-storm"></i></div>
-                    <h3 class="card-title">Multicloud & Hosting Avanzado</h3>
+                    <h3 class="card-title">Cloud & Hosting Avanzado</h3>
                     <ul class="card-list">
-                        <li>AWS (EC2, S3, RDS, Lambda, Route53, IAM)</li>
+                        <li>AWS (EC2, S3, IAM, Route53)</li>
                         <li>Microsoft Azure & Azure AD Enterprise</li>
-                        <li>IONOS Cloud & Bare Metal Dedicated Servers</li>
-                        <li>Publicación y Clusterización de Apps en IIS</li>
-                        <li>Cloudflare Enterprise, DNS & WAF Rules</li>
+                        <li>IONOS Cloud & Servidores Virtuales</li>
+                        <li>Publicación y Despliegue en IIS</li>
+                        <li>Gestión de Dominios, DNS & Akky</li>
                     </ul>
                 </div>
 
                 <!-- Card 2 -->
                 <div class="tech-card">
                     <div class="card-icon"><i class="ti ti-shield-lock"></i></div>
-                    <h3 class="card-title">Ciberseguridad, SOC & MICR</h3>
+                    <h3 class="card-title">Ciberseguridad & MICR</h3>
                     <ul class="card-list">
-                        <li>Auditoría, Hardening & Cumplimiento ISO 27001</li>
-                        <li>Estándares de Seguridad MICR (ANSI X9.100)</li>
-                        <li>Firewalls Fortinet, Palo Alto & Perimetral</li>
-                        <li>Implementación SSL/TLS, mTLS & Certificados</li>
-                        <li>VPNs Empresariales IPsec / WireGuard</li>
+                        <li>Auditoría & Hardening para PYMES</li>
+                        <li>Estándares de Seguridad MICR (ANSI)</li>
+                        <li>Firewalls Fortinet & Perimetral</li>
+                        <li>Implementación HTTPS & Certificados SSL</li>
+                        <li>Acceso Seguro VPN / IPsec</li>
                     </ul>
                 </div>
 
                 <!-- Card 3 -->
                 <div class="tech-card">
                     <div class="card-icon"><i class="ti ti-database"></i></div>
-                    <h3 class="card-title">Bases de Datos & High Availability</h3>
+                    <h3 class="card-title">Bases de Datos & OS</h3>
                     <ul class="card-list">
-                        <li>Microsoft SQL Server (AlwaysOn Clusters)</li>
-                        <li>MySQL, PostgreSQL & MariaDB Optimization</li>
-                        <li>Redis / Memcached In-Memory Databases</li>
+                        <li>Microsoft SQL Server (Queries & Admin)</li>
+                        <li>MySQL / MariaDB Database Hosting</li>
                         <li>Windows Server Active Directory & GPO</li>
-                        <li>Plan de Recuperación de Desastres (DRP)</li>
+                        <li>Linux (Debian / Ubuntu Enterprise)</li>
+                        <li>Estrategias de Backup & Recuperación</li>
                     </ul>
                 </div>
 
                 <!-- Card 4 -->
                 <div class="tech-card">
                     <div class="card-icon"><i class="ti ti-code"></i></div>
-                    <h3 class="card-title">Desarrollo, Scripting & APIs</h3>
+                    <h3 class="card-title">Desarrollo & Scripting</h3>
                     <ul class="card-list">
-                        <li>Python (FastAPI, Django, Scripting & Bot Dev)</li>
-                        <li>C# & Visual Basic (.NET Core Enterprise)</li>
+                        <li>Python (Automatización de procesos)</li>
+                        <li>C# & Visual Basic (.NET Ecosystem)</li>
                         <li>PowerShell & Bash Scripting Avanzado</li>
-                        <li>Git, GitHub Enterprise & Control de Versiones</li>
-                        <li>Consumo & Desarrollo de APIs RESTful / JSON</li>
+                        <li>Git & Repositorios en GitHub</li>
+                        <li>Consumo de APIs RESTful / JSON</li>
                     </ul>
                 </div>
 
                 <!-- Card 5 -->
                 <div class="tech-card">
                     <div class="card-icon"><i class="ti ti-brand-docker"></i></div>
-                    <h3 class="card-title">DevOps & Orquestación</h3>
+                    <h3 class="card-title">DevOps & Herramientas</h3>
                     <ul class="card-list">
-                        <li>Docker Containers & Microservicios</li>
-                        <li>Kubernetes (K8s) Cluster Management</li>
-                        <li>CI/CD Pipelines con GitHub Actions & Jenkins</li>
-                        <li>Terraform & Ansible Infrastructure as Code</li>
-                        <li>Monitoreo con Prometheus, Grafana & Zabbix</li>
+                        <li>Docker Containers Básicos</li>
+                        <li>Automatización de Tareas CI/CD</li>
+                        <li>Monitoreo de Servidores y Redes</li>
+                        <li>Documentación de Infraestructura</li>
+                        <li>Integración de Entornos de Pruebas</li>
                     </ul>
                 </div>
 
                 <!-- Card 6 -->
                 <div class="tech-card">
                     <div class="card-icon"><i class="ti ti-building-bridge"></i></div>
-                    <h3 class="card-title">Proyectos Críticos & Liderazgo</h3>
+                    <h3 class="card-title">Proyectos Críticos</h3>
                     <ul class="card-list">
-                        <li>Soporte e Infraestructura Crítica (Clientes DHL)</li>
-                        <li>Liderazgo de Equipos de Soporte Nivel 3</li>
-                        <li>Documentación de Arquitectura ITIL v4</li>
-                        <li>Migraciones Legacy a Cloud Native</li>
-                        <li>Auditorías de Infraestructura Empresarial</li>
+                        <li>Atención a Cuentas Clave (Clientes DHL)</li>
+                        <li>Liderazgo de Soporte Nivel 3</li>
+                        <li>Mejora Continua de Procesos TI</li>
+                        <li>Fundamentos ITIL v4</li>
+                        <li>Continuidad Operativa de Negocio</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certificaciones y Estándares -->
+    <!-- Estándares -->
     <section id="certificaciones" style="background: rgba(4, 9, 20, 0.6);">
         <div class="section-inner">
             <div class="section-header">
                 <h2 class="section-title">Estándares <span>& Marcos de Trabajo</span></h2>
-                <p class="section-subtitle">// Cumplimiento normativo y metodologías operativas</p>
+                <p class="section-subtitle">// Metodologías operativas y seguridad industrial</p>
             </div>
 
             <div class="badges-grid">
-                <div class="cert-badge"><i class="ti ti-certificate"></i> AWS Certified Solutions Architect</div>
-                <div class="cert-badge"><i class="ti ti-certificate"></i> ISO 27001 Cybersecurity Compliance</div>
-                <div class="cert-badge"><i class="ti ti-certificate"></i> ANSI X9.100-181 MICR Security Standard</div>
-                <div class="cert-badge"><i class="ti ti-certificate"></i> ITIL v4 Infrastructure Framework</div>
-                <div class="cert-badge"><i class="ti ti-certificate"></i> Certified Kubernetes Administrator (CKA)</div>
-                <div class="cert-badge"><i class="ti ti-certificate"></i> Fortinet NSE Network Security Specialist</div>
+                <div class="cert-badge"><i class="ti ti-certificate"></i> AWS Cloud Infrastructure</div>
+                <div class="cert-badge"><i class="ti ti-certificate"></i> Hardening y Ciberseguridad PYME</div>
+                <div class="cert-badge"><i class="ti ti-certificate"></i> Estándares MICR / ANSI X9</div>
+                <div class="cert-badge"><i class="ti ti-certificate"></i> ITIL v4 Framework</div>
+                <div class="cert-badge"><i class="ti ti-certificate"></i> Fortinet Security Specialist</div>
             </div>
         </div>
     </section>
@@ -509,7 +511,7 @@
         <div class="section-inner">
             <div class="section-header">
                 <h2 class="section-title">Canales de <span>Contacto Directo</span></h2>
-                <p class="section-subtitle">// Disponibilidad para consultoría de infraestructura y proyectos corporativos</p>
+                <p class="section-subtitle">// Comunicación directa para proyectos o soporte técnico</p>
             </div>
 
             <div class="contact-grid">
@@ -547,11 +549,11 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 Luis Alvarez • Chief Technical Architect & DevSecOps Director</p>
+        <p>© 2026 Luis Alvarez • Lead SysAdmin & Technical Architect</p>
         <p style="margin-top:0.3rem; opacity:0.6;">SAI Soluciones Avanzadas de Impresión & TI</p>
     </footer>
 
-    <!-- Script de Lluvia de 0s y 1s (Matrix Effect) -->
+    <!-- Script de Lluvia Matrix -->
     <script>
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
