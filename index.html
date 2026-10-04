@@ -1,678 +1,81 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis Alvarez | Lead SysAdmin & Technical Architect</title>
-    <meta name="description" content="Luis Alvarez: arquitectura de infraestructura, nube, ciberseguridad y automatización operativa desde Ciudad de México.">
-    <meta name="theme-color" content="#02050e">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://lalvarez-sai.github.io/">
-    <link rel="icon" href="image_db1bfd.png" type="image/png">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Luis Alvarez | Infraestructura, Cloud & Automatización">
-    <meta property="og:description" content="Arquitectura técnica, migraciones cloud y soluciones operativas diseñadas desde cero.">
-    <meta property="og:url" content="https://lalvarez-sai.github.io/">
-    <meta property="og:image" content="https://lalvarez-sai.github.io/image_final_perfil.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <!-- Iconos profesionales Tabler Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-color: #02050e;
-            --card-bg: rgba(8, 15, 30, 0.88);
-            --accent-cyan: #00f0ff;
-            --accent-green: #00ff66;
-            --accent-purple: #a855f7;
-            --border-color: rgba(0, 240, 255, 0.22);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --font-mono: 'JetBrains Mono', monospace;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-muted);
-            line-height: 1.4;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Matrix Canvas Background */
-        #matrix-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.22;
-        }
-
-        a { color: inherit; text-decoration: none; transition: all 0.3s ease; }
-
-        /* Header Ultralimpio */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(2, 5, 14, 0.92);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-        }
-        .nav-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.7rem 2rem;
-        }
-        .logo {
-            font-family: var(--font-mono);
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .logo span { color: var(--accent-cyan); }
-        .logo-img { height: 26px; width: auto; }
-        .nav-menu { display: flex; list-style: none; gap: 1.8rem; font-size: 0.85rem; font-weight: 600; font-family: var(--font-mono); }
-        .nav-menu a { color: #cbd5e1; }
-        .nav-menu a:hover { color: var(--accent-cyan); text-shadow: 0 0 10px rgba(0,240,255,0.8); }
-        .nav-right { display: flex; align-items: center; gap: 1.2rem; font-size: 1.2rem; color: var(--text-main); }
-        .nav-right a:hover { color: var(--accent-cyan); transform: translateY(-2px); }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            z-index: 1;
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 4.8rem 2rem 2rem 2rem;
-            display: grid;
-            grid-template-columns: 1.25fr 0.75fr;
-            gap: 2rem;
-            align-items: center;
-        }
-        .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid var(--border-color);
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            color: var(--accent-cyan);
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.8rem;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-        }
-        .hero-title {
-            font-size: 3.4rem;
-            font-weight: 800;
-            color: var(--text-main);
-            line-height: 1.05;
-            margin-bottom: 0.6rem;
-            letter-spacing: -1.5px;
-        }
-        .hero-title span {
-            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-green) 50%, var(--accent-purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero-subtitle {
-            font-family: var(--font-mono);
-            font-size: 0.92rem;
-            color: #e2e8f0;
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-        }
-        .hero-subtitle span { color: var(--accent-cyan); }
-        .hero-text { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem; max-width: 620px; }
-
-        /* Terminal Interactiva */
-        .terminal-box {
-            background: rgba(3, 8, 18, 0.95);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 0.8rem 1rem;
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            color: #a5f3fc;
-            margin-bottom: 1.2rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.8);
-        }
-        .terminal-header { display: flex; gap: 6px; margin-bottom: 0.4rem; }
-        .dot { width: 10px; height: 10px; border-radius: 50%; }
-        .dot-red { background: #ff5f56; }
-        .dot-yellow { background: #ffbd2e; }
-        .dot-green { background: #27c93f; }
-        .terminal-line { margin-bottom: 0.2rem; }
-        .terminal-line span { color: var(--accent-cyan); }
-        .cursor-blink { display: inline-block; width: 8px; height: 14px; background: var(--accent-cyan); margin-left: 4px; vertical-align: middle; animation: blink 1s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-        /* Grid de Métricas Reales */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.7rem;
-            margin-bottom: 1.2rem;
-        }
-        .stat-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 0.65rem;
-            border-radius: 6px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
-        .stat-number { font-family: var(--font-mono); font-size: 1.2rem; font-weight: 700; color: var(--text-main); }
-        .stat-number span { color: var(--accent-cyan); }
-        .stat-label { font-size: 0.65rem; color: #64748b; font-weight: 700; text-transform: uppercase; }
-
-        .btn-group { display: flex; gap: 0.8rem; }
-        .btn {
-            padding: 0.7rem 1.4rem;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-cyan) 0%, #0066ff 100%);
-            color: #02050e;
-            border: none;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
-        }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(0, 240, 255, 0.7); }
-        .btn-secondary { background: rgba(8, 15, 30, 0.9); color: var(--text-main); border: 1px solid var(--border-color); }
-        .btn-secondary:hover { border-color: var(--accent-cyan); background: rgba(0, 240, 255, 0.1); }
-
-        /* Foto Cyber frame con Filtro de Iluminación */
-        .hero-right { display: flex; justify-content: center; position: relative; }
-        .profile-frame { position: relative; width: 290px; height: 380px; }
-        .profile-frame::before {
-            content: '';
-            position: absolute;
-            top: -10px; left: -10px; right: -10px; bottom: -10px;
-            border: 2px solid var(--accent-cyan);
-            border-radius: 14px;
-            opacity: 0.5;
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
-        }
-        .avatar {
-            width: 100%; height: 100%;
-            border-radius: 10px;
-            object-fit: cover;
-            object-position: center 15%;
-            position: relative;
-            z-index: 2;
-            border: 1px solid var(--border-color);
-            background-color: #080f1e;
-            filter: brightness(130%) contrast(90%) saturate(85%) hue-rotate(-5deg);
-            transition: all 0.5s ease;
-        }
-        .profile-frame:hover .avatar {
-            filter: brightness(135%) contrast(95%) saturate(100%);
-        }
-
-        /* Secciones principales */
-        section { position: relative; z-index: 1; padding: 3.5rem 2rem; }
-        .section-inner { max-width: 1300px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 2.5rem; }
-        .section-title { font-size: 2.1rem; color: var(--text-main); font-weight: 800; }
-        .section-title span { color: var(--accent-cyan); }
-        .section-subtitle { color: #64748b; font-size: 0.9rem; margin-top: 0.3rem; font-family: var(--font-mono); }
-
-        /* Grid de 6 Cards */
-        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
-        .tech-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.4rem 1.2rem;
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
-        }
-        .tech-card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.4); }
-        .card-icon {
-            width: 42px; height: 42px; border-radius: 6px;
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            color: var(--accent-cyan);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; margin-bottom: 0.8rem;
-        }
-        .card-title { font-size: 1.05rem; color: var(--text-main); font-weight: 700; margin-bottom: 0.8rem; }
-        .card-list { list-style: none; }
-        .card-list li { font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
-        .card-list li::before { content: '>'; font-family: var(--font-mono); color: var(--accent-cyan); font-weight: bold; }
-
-        /* Casos de éxito */
-        .projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
-        .project-card {
-            background: linear-gradient(145deg, rgba(8, 15, 30, 0.96), rgba(4, 12, 25, 0.86));
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.6rem;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .project-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(var(--accent-cyan), var(--accent-purple)); }
-        .project-card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); box-shadow: 0 12px 34px -12px rgba(0, 240, 255, 0.45); }
-        .project-number { color: var(--accent-cyan); font: 700 0.76rem var(--font-mono); letter-spacing: 1px; }
-        .project-title { color: var(--text-main); font-size: 1.3rem; margin: 0.55rem 0; }
-        .project-summary { color: #cbd5e1; font-size: 0.92rem; margin-bottom: 1rem; }
-        .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .project-tag { color: #a5f3fc; background: rgba(0, 240, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.22); border-radius: 999px; font: 0.7rem var(--font-mono); padding: 0.32rem 0.6rem; }
-
-        /* Badges de Certificaciones / Standards */
-        .badges-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .cert-badge {
-            background: rgba(8, 15, 30, 0.9);
-            border: 1px solid var(--border-color);
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .cert-badge i { color: var(--accent-cyan); }
-
-        /* Contact Grid */
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
-        .contact-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.2rem;
-            display: flex; align-items: center; gap: 1rem;
-        }
-        .contact-item:hover { border-color: var(--accent-cyan); background: rgba(0, 240, 255, 0.08); }
-        .contact-icon-box {
-            width: 42px; height: 42px; border-radius: 6px;
-            background: rgba(0, 240, 255, 0.12); color: var(--accent-cyan);
-            display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
-        }
-        .contact-label { font-size: 0.7rem; color: #64748b; font-family: var(--font-mono); text-transform: uppercase; }
-        .contact-val { font-size: 0.88rem; color: var(--text-main); font-weight: 600; }
-        .availability-note { text-align: center; color: #cbd5e1; margin-top: 1.5rem; font-size: 0.92rem; }
-        .availability-note span { color: var(--accent-cyan); font-family: var(--font-mono); }
-
-        /* Footer */
-        footer { border-top: 1px solid var(--border-color); padding: 2rem 2rem; text-align: center; font-size: 0.8rem; color: #64748b; background: #010308; font-family: var(--font-mono); position: relative; z-index: 1; }
-
-        @media (max-width: 960px) {
-            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 4.5rem; }
-            .hero-subtitle, .btn-group { justify-content: center; }
-            .hero-text { margin: 0 auto 1rem auto; }
-            .profile-frame { width: 240px; height: 310px; margin: 0 auto; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .projects-grid { grid-template-columns: 1fr; }
-            .nav-menu { display: none; }
-        }
-        @media (max-width: 480px) {
-            .nav-container { padding: 0.7rem 1rem; }
-            .logo { font-size: 0.88rem; gap: 0.35rem; }
-            .logo-img { height: 22px; }
-            .nav-right { gap: 0.75rem; }
-            .hero, section { padding-left: 1rem; padding-right: 1rem; }
-            .hero-title { font-size: 2.6rem; }
-            .btn-group { flex-direction: column; }
-            .btn { justify-content: center; }
-            .project-card { padding: 1.25rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Luis Alvarez diseña infraestructura cloud, automatización y sistemas operativos para empresas desde Ciudad de México.">
+  <meta name="theme-color" content="#05080f">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://lalvarez-sai.github.io/">
+  <link rel="icon" href="image_db1bfd.png" type="image/png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Luis Alvarez | Sistemas que hacen avanzar la operación">
+  <meta property="og:description" content="Cloud, automatización y seguridad para operaciones que necesitan crecer con control.">
+  <meta property="og:url" content="https://lalvarez-sai.github.io/">
+  <meta property="og:image" content="https://lalvarez-sai.github.io/image_final_perfil.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Luis Alvarez | Arquitectura, Cloud y Automatización</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    :root { --ink:#eaf5ff; --muted:#91a3b8; --faint:#53657a; --bg:#05080f; --panel:rgba(10,17,29,.88); --line:rgba(130,181,211,.18); --cyan:#2ae9ff; --lime:#91f68e; --violet:#9b8cff; --mono:'DM Mono',monospace; --sans:'Manrope',sans-serif; }
+    * { box-sizing:border-box; margin:0; padding:0; } html { scroll-behavior:smooth; } body { background:var(--bg); color:var(--ink); font-family:var(--sans); overflow-x:hidden; } a { color:inherit; text-decoration:none; }
+    #matrix-canvas { position:fixed; inset:0; width:100vw; height:100vh; opacity:.17; pointer-events:none; z-index:-2; } .ambient { position:fixed; width:55vw; height:55vw; border-radius:50%; filter:blur(100px); opacity:.14; pointer-events:none; z-index:-3; } .ambient.a { background:#007b98; top:-30vw; left:-20vw; } .ambient.b { background:#43147d; bottom:-40vw; right:-22vw; }
+    .shell { max-width:1180px; margin:auto; padding:0 2rem; } .eyebrow { color:var(--cyan); display:flex; align-items:center; gap:.55rem; font:500 .7rem var(--mono); letter-spacing:.14em; text-transform:uppercase; } .eyebrow:before { content:''; width:.45rem; height:.45rem; border-radius:50%; background:var(--cyan); box-shadow:0 0 14px var(--cyan); } .gradient { background:linear-gradient(100deg,var(--cyan),var(--lime) 55%,var(--violet)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .skip { position:fixed; z-index:99; top:-4rem; left:1rem; padding:.7rem 1rem; color:#051017; background:var(--cyan); font-weight:800; } .skip:focus { top:1rem; }
+    header { position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line); background:rgba(5,8,15,.78); backdrop-filter:blur(16px); } .nav { height:70px; display:flex; align-items:center; justify-content:space-between; } .brand { display:flex; align-items:center; gap:.6rem; font:500 .95rem var(--mono); letter-spacing:-.04em; } .brand img { height:29px; width:auto; } .brand strong { color:var(--cyan); font-weight:500; } .nav-list,.social { display:flex; list-style:none; gap:1.5rem; } .nav-list { color:#b8c9d8; font:.74rem var(--mono); } .nav-list a:hover { color:var(--cyan); } .social { gap:.75rem; } .social a { display:grid; place-items:center; width:31px; height:31px; border:1px solid var(--line); border-radius:50%; color:var(--muted); transition:.2s; } .social a:hover { color:var(--cyan); border-color:var(--cyan); transform:translateY(-2px); }
+    .hero { display:grid; grid-template-columns:1.08fr .92fr; gap:4.5rem; align-items:center; min-height:670px; padding:5.7rem 0 4rem; } h1 { max-width:720px; margin:1rem 0 1.35rem; font-size:clamp(3.1rem,6.5vw,5.45rem); line-height:.94; letter-spacing:-.075em; } .hero-copy { max-width:590px; color:#bdcad7; font-size:1.1rem; line-height:1.75; } .hero-copy b { color:var(--ink); } .actions { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:2rem; } .button { display:inline-flex; align-items:center; justify-content:center; gap:.6rem; padding:.85rem 1.1rem; border:1px solid transparent; font-size:.84rem; font-weight:800; transition:.2s; } .primary { background:var(--cyan); color:#051017; box-shadow:0 0 25px rgba(42,233,255,.22); } .ghost { background:rgba(12,22,36,.66); border-color:var(--line); } .button:hover { transform:translateY(-2px); border-color:var(--cyan); } .footnote { margin-top:1.5rem; color:var(--faint); font:.72rem var(--mono); }
+    .board { position:relative; padding:1rem; background:linear-gradient(145deg,rgba(14,27,43,.96),rgba(7,12,22,.92)); border:1px solid rgba(115,198,230,.32); box-shadow:0 24px 70px rgba(0,0,0,.38),0 0 44px rgba(30,212,255,.09); } .board:before { content:''; position:absolute; top:0; left:0; width:43%; height:2px; background:linear-gradient(90deg,var(--cyan),var(--violet)); } .board-top { display:flex; align-items:center; justify-content:space-between; padding:.25rem 0 1rem; border-bottom:1px solid var(--line); } .board-label,.live { font:.67rem var(--mono); letter-spacing:.1em; } .board-label { color:var(--muted); } .live { color:var(--lime); } .live:before { content:''; display:inline-block; width:.4rem; height:.4rem; margin-right:.4rem; border-radius:50%; background:var(--lime); box-shadow:0 0 10px var(--lime); } .portrait { position:relative; height:245px; margin:1rem 0; overflow:hidden; } .portrait:after { content:''; position:absolute; inset:0; background:linear-gradient(0deg,rgba(5,8,15,.75),transparent 45%); } .portrait img { width:100%; height:100%; object-fit:cover; object-position:center 13%; filter:saturate(.78) contrast(1.05); } .portrait-label { position:absolute; z-index:1; left:.85rem; bottom:.85rem; } .portrait-label b { display:block; font-size:1.05rem; } .portrait-label span { color:#b8c9d8; font:.65rem var(--mono); } .focuses { display:grid; grid-template-columns:1fr 1fr; gap:.65rem; } .focus { min-height:83px; padding:.75rem; border:1px solid var(--line); background:rgba(2,9,17,.65); } .focus span { display:block; margin-bottom:.35rem; color:var(--cyan); font:.61rem var(--mono); } .focus b { display:block; font-size:.78rem; line-height:1.4; }
+    .proof { border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:rgba(7,13,23,.68); } .proof-grid { display:grid; grid-template-columns:repeat(4,1fr); } .proof-item { padding:1.45rem 1.5rem; border-left:1px solid var(--line); } .proof-item:last-child { border-right:1px solid var(--line); } .num { font-size:1.85rem; font-weight:800; letter-spacing:-.06em; } .num em { color:var(--cyan); font-size:1rem; font-style:normal; } .metric { margin-top:.2rem; color:var(--muted); font:.65rem var(--mono); letter-spacing:.07em; text-transform:uppercase; }
+    section { padding:7rem 0; } .heading { max-width:720px; margin-bottom:2.75rem; } .heading h2 { margin:.8rem 0; font-size:clamp(2rem,4vw,3.35rem); line-height:1.02; letter-spacing:-.06em; } .heading p:last-child { max-width:600px; color:var(--muted); line-height:1.7; }
+    .solution-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; border:1px solid var(--line); background:var(--line); } .solution { min-height:300px; padding:1.65rem; background:rgba(8,15,25,.92); transition:.25s; } .solution:hover { background:rgba(12,27,43,.96); } .index { color:var(--cyan); font:.68rem var(--mono); } .solution-icon { display:grid; place-items:center; width:42px; height:42px; margin:2.6rem 0 1rem; color:var(--cyan); border:1px solid rgba(42,233,255,.2); background:rgba(42,233,255,.08); font-size:1.3rem; } .solution h3 { margin-bottom:.65rem; font-size:1.23rem; line-height:1.25; letter-spacing:-.04em; } .solution p { color:var(--muted); font-size:.89rem; line-height:1.65; }
+    .cases { border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:linear-gradient(180deg,rgba(5,8,15,.1),rgba(16,24,38,.6)); } .case { display:grid; grid-template-columns:.3fr .7fr; gap:3rem; padding:3rem 0; border-top:1px solid var(--line); } .case:first-of-type { border-top:0; } .case-meta { margin-top:.7rem; color:var(--faint); font:.68rem/1.5 var(--mono); text-transform:uppercase; } .case h3 { margin-bottom:1rem; font-size:clamp(1.8rem,3vw,2.7rem); line-height:1.05; letter-spacing:-.06em; } .case-intro { max-width:780px; color:#c0cedb; font-size:1.04rem; line-height:1.75; } .details { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; } .detail { padding-top:.8rem; border-top:1px solid rgba(42,233,255,.36); } .detail span { display:block; margin-bottom:.55rem; color:var(--cyan); font:.64rem var(--mono); letter-spacing:.08em; } .detail p { color:var(--muted); font-size:.84rem; line-height:1.6; } .tags { display:flex; flex-wrap:wrap; gap:.45rem; margin-top:1.4rem; } .tag { padding:.4rem .55rem; border:1px solid var(--line); color:#b8c9d8; font:.64rem var(--mono); }
+    .method { display:grid; grid-template-columns:repeat(4,1fr); } .step { min-height:230px; padding:1rem 1.4rem 1rem 1.2rem; border-left:1px solid var(--line); } .step:last-child { border-right:1px solid var(--line); } .step-no { color:rgba(42,233,255,.35); font:.7rem var(--mono); } .step h3 { margin:1.8rem 0 .65rem; font-size:1rem; } .step p { color:var(--muted); font-size:.84rem; line-height:1.6; }
+    .stack { display:grid; grid-template-columns:.34fr .66fr; border:1px solid var(--line); background:var(--panel); } .stack-intro { padding:2rem; border-right:1px solid var(--line); } .stack-intro h3 { margin:.7rem 0; font-size:1.45rem; letter-spacing:-.05em; } .stack-intro p { color:var(--muted); font-size:.84rem; line-height:1.65; } .stack-list { display:flex; flex-wrap:wrap; align-content:center; gap:.6rem; padding:2rem; } .stack-list span { padding:.55rem .7rem; border:1px solid var(--line); color:#c1d0dc; background:rgba(255,255,255,.025); font:.72rem var(--mono); }
+    .contact { padding-bottom:5rem; text-align:center; } .contact .eyebrow { justify-content:center; } .contact h2 { max-width:850px; margin:1rem auto 1.3rem; font-size:clamp(2.6rem,5.5vw,4.8rem); line-height:.98; letter-spacing:-.075em; } .contact p { max-width:610px; margin:auto; color:var(--muted); line-height:1.7; } .contact-options { display:flex; flex-wrap:wrap; justify-content:center; gap:.8rem; margin-top:2rem; } .contact-link { display:flex; align-items:center; gap:.7rem; padding:.85rem 1rem; border:1px solid var(--line); background:var(--panel); font:.75rem var(--mono); transition:.2s; } .contact-link:hover { color:var(--cyan); border-color:var(--cyan); transform:translateY(-2px); }
+    footer { padding:1.4rem 0; border-top:1px solid var(--line); color:var(--faint); font:.68rem var(--mono); } .footer-inner { display:flex; justify-content:space-between; }
+    @media(max-width:850px) { .nav-list { display:none; } .hero { grid-template-columns:1fr; gap:3rem; padding-top:4rem; } .board { max-width:520px; } .proof-grid,.solution-grid { grid-template-columns:repeat(2,1fr); } .proof-item:nth-child(3) { border-left:0; } .case { grid-template-columns:1fr; gap:1.2rem; } .method { grid-template-columns:repeat(2,1fr); } .step:nth-child(2) { border-right:1px solid var(--line); } .stack { grid-template-columns:1fr; } .stack-intro { border-right:0; border-bottom:1px solid var(--line); } }
+    @media(max-width:530px) { .shell { padding:0 1.1rem; } .brand { font-size:.78rem; } .brand img { height:24px; } .hero { min-height:auto; padding:3.7rem 0; } h1 { font-size:3rem; } .hero-copy { font-size:1rem; } .actions .button { width:100%; } section { padding:4.6rem 0; } .proof-grid,.solution-grid,.details,.method { grid-template-columns:1fr; } .proof-item,.proof-item:nth-child(3),.step,.step:nth-child(2) { border-right:1px solid var(--line); border-left:1px solid var(--line); } .proof-item+.proof-item,.step+.step { border-top:1px solid var(--line); } .solution { min-height:0; } .solution-icon { margin-top:1.6rem; } .case { padding:2.3rem 0; } .footer-inner { flex-direction:column; gap:.45rem; } }
+  </style>
 </head>
 <body>
-
-    <!-- Canvas para la lluvia Matrix de 0s y 1s -->
-    <canvas id="matrix-canvas" aria-hidden="true"></canvas>
-
-    <!-- Header Navbar -->
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="image_db1bfd.png" alt="SAI" class="logo-img">
-                LUIS_<span>ALVAREZ</span>.sys
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#inicio">// Inicio</a></li>
-                <li><a href="#capacidades">// Stack_Técnico</a></li>
-                <li><a href="#proyectos">// Impacto</a></li>
-                <li><a href="#contacto">// Contacto</a></li>
-            </ul>
-            <div class="nav-right">
-                <a href="https://github.com/lalvarez-sai" target="_blank" rel="noopener noreferrer" aria-label="Perfil de GitHub de Luis Alvarez"><i class="ti ti-brand-github" aria-hidden="true"></i></a>
-                <a href="https://www.linkedin.com/in/luis-alvarez-28207b20b/" target="_blank" rel="noopener noreferrer" aria-label="Perfil de LinkedIn de Luis Alvarez"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></a>
-            </div>
-        </div>
-    </header>
-
-    <main>
-    <!-- Hero Section -->
-    <section id="inicio">
-        <div class="hero">
-            <div class="hero-left">
-                <div class="hero-tag"><i class="ti ti-shield-code"></i> Lead SysAdmin & Technical Architect</div>
-                <h1 class="hero-title">Luis <span>Alvarez</span></h1>
-                <div class="hero-subtitle">Cloud Multicloud <span>•</span> Ciberseguridad <span>•</span> SQL & IIS <span>•</span> Python/C#</div>
-                
-                <p class="hero-text">
-                    Especialista en Orquestación de Infraestructura Crítica, Administración Multicloud y Hardening de Seguridad. Garantizo alta disponibilidad en entornos empresariales complejos.
-                </p>
-
-                <!-- Consola Viva Simulated -->
-                <div class="terminal-box">
-                    <div class="terminal-header">
-                        <div class="dot dot-red"></div>
-                        <div class="dot dot-yellow"></div>
-                        <div class="dot dot-green"></div>
-                    </div>
-                    <div class="terminal-line"><span>root@sysadmin-node:~#</span> systemctl status infrastructure.service</div>
-                    <div class="terminal-line">> AWS / Azure / IONOS Cloud: <span style="color:#00ff66;">[ONLINE 99.9%]</span></div>
-                    <div class="terminal-line">> IIS Web Apps & SQL Server: <span style="color:#00ff66;">[OPERATIONAL]</span></div>
-                    <div class="terminal-line">> Firewalls & MICR Security: <span style="color:#00ff66;">[HARDENED / ACTIVE]</span><span class="cursor-blink"></span></div>
-                </div>
-
-                <!-- Métricas Reales -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-number">+15<span>Años</span></div>
-                        <div class="stat-label">Experiencia TI</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">99.9<span>%</span></div>
-                        <div class="stat-label">Uptime Objetivo</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">+500<span></span></div>
-                        <div class="stat-label">Equipos Administrados</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">MICR<span>Sec</span></div>
-                        <div class="stat-label">Especialidad ANSI</div>
-                    </div>
-                </div>
-
-                <div class="btn-group">
-                    <a href="#proyectos" class="btn btn-primary"><i class="ti ti-rocket" aria-hidden="true"></i> Ver Casos de Éxito</a>
-                    <a href="#contacto" class="btn btn-secondary"><i class="ti ti-mail" aria-hidden="true"></i> Contacto Directo</a>
-                </div>
-            </div>
-
-            <div class="hero-right">
-                <div class="profile-frame">
-                    <img src="image_final_perfil.jpg" alt="Luis Alvarez" class="avatar">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Casos de éxito -->
-    <section id="proyectos">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2 class="section-title">Impacto en <span>Operación & Cloud</span></h2>
-                <p class="section-subtitle">// Soluciones aterrizadas para retos reales de negocio</p>
-            </div>
-            <div class="projects-grid">
-                <article class="project-card">
-                    <div class="project-number">CASO_01 // TRANSFORMACIÓN OPERATIVA</div>
-                    <h3 class="project-title">Intranet SAI desde cero</h3>
-                    <p class="project-summary">Diseño y desarrollo integral de una aplicación interna para una empresa de tecnología que no contaba con una plataforma centralizada. La solución ordena la operación, ventas y administración en un solo entorno, convirtiendo procesos dispersos en flujos más claros, trazables y escalables.</p>
-                    <ul class="card-list">
-                        <li>Levantamiento de necesidades con las áreas operativas</li>
-                        <li>Diseño de módulos orientados a ventas, administración y operación</li>
-                        <li>Automatización de tareas repetitivas y estandarización de procesos</li>
-                        <li>Base técnica preparada para evolucionar con la empresa</li>
-                    </ul>
-                    <div class="project-tags"><span class="project-tag">AUTOMATIZACIÓN</span><span class="project-tag">OPERACIÓN</span><span class="project-tag">DESARROLLO</span></div>
-                </article>
-                <article class="project-card">
-                    <div class="project-number">CASO_02 // MODERNIZACIÓN DE INFRAESTRUCTURA</div>
-                    <h3 class="project-title">Migración de 10 servidores a AWS</h3>
-                    <p class="project-summary">Planificación y ejecución de una migración de infraestructura física hacia AWS, cuidando la continuidad de los servicios y el orden de la transición. El proyecto llevó entornos tradicionales a una base cloud más flexible, administrable y lista para crecer.</p>
-                    <ul class="card-list">
-                        <li>Inventario técnico y definición de la estrategia de migración</li>
-                        <li>Diseño de red, accesos, seguridad y segmentación en AWS</li>
-                        <li>Ventanas de cambio, validaciones y puesta en marcha controlada</li>
-                        <li>Verificación post-migración, respaldos y continuidad operativa</li>
-                    </ul>
-                    <div class="project-tags"><span class="project-tag">AWS</span><span class="project-tag">10 SERVIDORES</span><span class="project-tag">CLOUD MIGRATION</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stack Técnico Completo -->
-    <section id="capacidades">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2 class="section-title">Arquitectura <span>& Stack Tecnológico</span></h2>
-                <p class="section-subtitle">// Infraestructura, despliegue, bases de datos y ciberseguridad</p>
-            </div>
-
-            <div class="grid-cards">
-                <!-- Card 1 -->
-                <div class="tech-card">
-                    <div class="card-icon"><i class="ti ti-cloud-storm"></i></div>
-                    <h3 class="card-title">Cloud & Hosting Avanzado</h3>
-                    <ul class="card-list">
-                        <li>AWS (EC2, S3, IAM, Route53)</li>
-                        <li>Microsoft Azure & Azure AD Enterprise</li>
-                        <li>IONOS Cloud & Servidores Virtuales</li>
-                        <li>Publicación y Despliegue en IIS</li>
-                        <li>Gestión de Dominios, DNS & Akky</li>
-                    </ul>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="tech-card">
-                    <div class="card-icon"><i class="ti ti-shield-lock"></i></div>
-                    <h3 class="card-title">Ciberseguridad & MICR</h3>
-                    <ul class="card-list">
-                        <li>Auditoría & Hardening para PYMES</li>
-                        <li>Estándares de Seguridad MICR (ANSI)</li>
-                        <li>Firewalls Fortinet & Perimetral</li>
-                        <li>Implementación HTTPS & Certificados SSL</li>
-                        <li>Acceso Seguro VPN / IPsec</li>
-                    </ul>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="tech-card">
-                    <div class="card-icon"><i class="ti ti-database"></i></div>
-                    <h3 class="card-title">Bases de Datos & OS</h3>
-                    <ul class="card-list">
-                        <li>Microsoft SQL Server (Queries & Admin)</li>
-                        <li>MySQL / MariaDB Database Hosting</li>
-                        <li>Windows Server Active Directory & GPO</li>
-                        <li>Linux (Debian / Ubuntu Enterprise)</li>
-                        <li>Estrategias de Backup & Recuperación</li>
-                    </ul>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="tech-card">
-                    <div class="card-icon"><i class="ti ti-code"></i></div>
-                    <h3 class="card-title">Desarrollo & Scripting</h3>
-                    <ul class="card-list">
-                        <li>Python (Automatización de procesos)</li>
-                        <li>C# & Visual Basic (.NET Ecosystem)</li>
-                        <li>PowerShell & Bash Scripting Avanzado</li>
-                        <li>Git & Repositorios en GitHub</li>
-                        <li>Consumo de APIs RESTful / JSON</li>
-                    </ul>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="tech-card">
-                    <div class="card-icon"><i class="ti ti-brand-docker"></i></div>
-                    <h3 class="card-title">DevOps & Herramientas</h3>
-                    <ul class="card-list">
-                        <li>Docker Containers Básicos</li>
-                        <li>Automatización de Tareas CI/CD</li>
-                        <li>Monitoreo de Servidores y Redes</li>
-                        <li>Documentación de Infraestructura</li>
-                        <li>Integración de Entornos de Pruebas</li>
-                    </ul>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="tech-card">
-                    <div class="card-icon"><i class="ti ti-building-bridge"></i></div>
-                    <h3 class="card-title">Proyectos Críticos</h3>
-                    <ul class="card-list">
-                        <li>Atención a Cuentas Clave (Clientes DHL)</li>
-                        <li>Liderazgo de Soporte Nivel 3</li>
-                        <li>Mejora Continua de Procesos TI</li>
-                        <li>Fundamentos ITIL v4</li>
-                        <li>Continuidad Operativa de Negocio</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Conocimientos y marcos de trabajo -->
-    <section id="certificaciones" style="background: rgba(4, 9, 20, 0.6);">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2 class="section-title">Conocimientos <span>& Marcos de Trabajo</span></h2>
-                <p class="section-subtitle">// Tecnologías, metodologías y formación continua</p>
-            </div>
-
-            <div class="badges-grid">
-                <div class="cert-badge"><i class="ti ti-cloud" aria-hidden="true"></i> AWS Cloud Infrastructure</div>
-                <div class="cert-badge"><i class="ti ti-shield-check" aria-hidden="true"></i> Curso de Ciberseguridad · UNAM</div>
-                <div class="cert-badge"><i class="ti ti-file-certificate" aria-hidden="true"></i> Estándares MICR / ANSI X9</div>
-                <div class="cert-badge"><i class="ti ti-settings" aria-hidden="true"></i> ITIL v4 Framework</div>
-                <div class="cert-badge"><i class="ti ti-shield-lock" aria-hidden="true"></i> Fortinet & Seguridad Perimetral</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2 class="section-title">Canales de <span>Contacto Directo</span></h2>
-                <p class="section-subtitle">// CDMX, México · Comunicación directa para proyectos o soporte técnico</p>
-            </div>
-
-            <div class="contact-grid">
-                <a href="https://wa.me/525580767394" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Enviar WhatsApp a Luis Alvarez">
-                    <div class="contact-icon-box"><i class="ti ti-brand-whatsapp"></i></div>
-                    <div>
-                        <div class="contact-label">WhatsApp Directo</div>
-                        <div class="contact-val">55 8076 7394</div>
-                    </div>
-                </a>
-                <a href="mailto:lalvarez@micr-sai.com.mx" class="contact-item">
-                    <div class="contact-icon-box"><i class="ti ti-mail"></i></div>
-                    <div>
-                        <div class="contact-label">Correo Oficial</div>
-                        <div class="contact-val">lalvarez@micr-sai.com.mx</div>
-                    </div>
-                </a>
-                <a href="https://github.com/lalvarez-sai" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Abrir GitHub de Luis Alvarez">
-                    <div class="contact-icon-box"><i class="ti ti-brand-github"></i></div>
-                    <div>
-                        <div class="contact-label">GitHub Repos</div>
-                        <div class="contact-val">/lalvarez-sai</div>
-                    </div>
-                </a>
-                <a href="https://www.linkedin.com/in/luis-alvarez-28207b20b/" target="_blank" rel="noopener noreferrer" class="contact-item" aria-label="Abrir LinkedIn de Luis Alvarez">
-                    <div class="contact-icon-box"><i class="ti ti-brand-linkedin"></i></div>
-                    <div>
-                        <div class="contact-label">LinkedIn Profile</div>
-                        <div class="contact-val">/in/luis-alvarez-28207b20b</div>
-                    </div>
-                </a>
-            </div>
-            <p class="availability-note"><span>// ESTADO:</span> Estoy a tus órdenes para proyectos de infraestructura, cloud, automatización y seguridad.</p>
-        </div>
-    </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Luis Alvarez • Lead SysAdmin & Technical Architect</p>
-        <p style="margin-top:0.3rem; opacity:0.6;">SAI Soluciones Avanzadas de Impresión & TI</p>
-    </footer>
-
-    <!-- Script de Lluvia Matrix -->
-    <script>
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        const chars = '01';
-        const fontSize = 14;
-        const columns = Math.floor(canvas.width / fontSize);
-        const drops = Array(columns).fill(1);
-
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(2, 5, 14, 0.08)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#00f0ff';
-            ctx.font = fontSize + 'px "JetBrains Mono", monospace';
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = chars.charAt(Math.floor(Math.random() * chars.length));
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-
-        setInterval(drawMatrix, 40);
-    </script>
-
+  <a class="skip" href="#contenido">Ir al contenido</a>
+  <canvas id="matrix-canvas" aria-hidden="true"></canvas><div class="ambient a" aria-hidden="true"></div><div class="ambient b" aria-hidden="true"></div>
+  <header><nav class="nav shell" aria-label="Navegación principal">
+    <a class="brand" href="#inicio"><img src="image_db1bfd.png" alt="SAI">LUIS_<strong>ALVAREZ</strong>.SYS</a>
+    <ul class="nav-list"><li><a href="#enfoque">// Enfoque</a></li><li><a href="#impacto">// Impacto</a></li><li><a href="#metodo">// Método</a></li><li><a href="#contacto">// Contacto</a></li></ul>
+    <div class="social"><a href="https://github.com/lalvarez-sai" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Luis Alvarez"><i class="ti ti-brand-github" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/luis-alvarez-28207b20b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Luis Alvarez"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></a></div>
+  </nav></header>
+  <main id="contenido">
+    <section class="hero shell" id="inicio"><div>
+      <p class="eyebrow">Arquitectura para operación real</p>
+      <h1>Construyo sistemas que hacen que la <span class="gradient">operación avance.</span></h1>
+      <p class="hero-copy">Diseño infraestructura cloud, automatización y seguridad para empresas que necesitan más que tecnología: <b>necesitan control, continuidad y una base lista para crecer.</b></p>
+      <div class="actions"><a class="button primary" href="#impacto"><i class="ti ti-arrow-down-right" aria-hidden="true"></i> Ver casos de impacto</a><a class="button ghost" href="#contacto"><i class="ti ti-message" aria-hidden="true"></i> Hablemos de tu operación</a></div>
+      <p class="footnote">CDMX, MÉXICO // CLOUD · AUTOMATIZACIÓN · SEGURIDAD · OPERACIÓN TI</p>
+    </div><aside class="board" aria-label="Perfil y enfoque actual"><div class="board-top"><span class="board-label">SYSTEMS / OPERATOR PROFILE</span><span class="live">ACTIVO</span></div><div class="portrait"><img src="image_final_perfil.jpg" alt="Luis Alvarez"><div class="portrait-label"><b>Luis Alvarez</b><span>Arquitectura · Cloud · Automatización</span></div></div><div class="focuses"><div class="focus"><span>FOCUS_01</span><b>Intranet SAI para ventas, operación y administración.</b></div><div class="focus"><span>FOCUS_02</span><b>Migración de infraestructura física hacia AWS.</b></div></div></aside></section>
+    <section class="proof" aria-label="Indicadores profesionales"><div class="shell proof-grid"><div class="proof-item"><div class="num">15<em>+</em></div><div class="metric">Años en TI</div></div><div class="proof-item"><div class="num">10</div><div class="metric">Servidores llevados a AWS</div></div><div class="proof-item"><div class="num">3</div><div class="metric">Áreas conectadas en Intranet SAI</div></div><div class="proof-item"><div class="num">500<em>+</em></div><div class="metric">Equipos administrados</div></div></div></section>
+    <section class="shell" id="enfoque"><div class="heading"><p class="eyebrow">Lo que transformo</p><h2>No administro infraestructura. La convierto en <span class="gradient">capacidad operativa.</span></h2><p>El objetivo no es agregar otra herramienta: es resolver el cuello de botella que frena al negocio y dejar una operación más clara, segura y controlable.</p></div><div class="solution-grid">
+      <article class="solution"><span class="index">01 / AUTOMATIZACIÓN</span><div class="solution-icon"><i class="ti ti-automation" aria-hidden="true"></i></div><h3>Procesos que dejan de depender de memoria y hojas sueltas.</h3><p>Conecto áreas, elimino trabajo repetitivo y convierto tareas dispersas en flujos trazables que el equipo puede operar y mejorar.</p></article>
+      <article class="solution"><span class="index">02 / CLOUD</span><div class="solution-icon"><i class="ti ti-cloud-up" aria-hidden="true"></i></div><h3>Infraestructura lista para crecer sin improvisar.</h3><p>Diseño transiciones hacia cloud con arquitectura, seguridad, respaldos y continuidad para que mover sistemas sea una mejora, no un riesgo.</p></article>
+      <article class="solution"><span class="index">03 / CONTINUIDAD</span><div class="solution-icon"><i class="ti ti-shield-check" aria-hidden="true"></i></div><h3>Seguridad que protege sin detener la operación.</h3><p>Fortalezco accesos, plataformas y datos para reducir exposición, mantener disponibilidad y dar visibilidad a lo que realmente importa.</p></article>
+    </div></section>
+    <section class="cases" id="impacto"><div class="shell"><div class="heading"><p class="eyebrow">Impacto comprobable</p><h2>Dos retos distintos. Una misma forma de trabajar: <span class="gradient">aterrizar soluciones.</span></h2></div>
+      <article class="case"><div><p class="index">CASO_01</p><p class="case-meta">Transformación operativa<br>En desarrollo</p></div><div><h3>Intranet SAI: de procesos dispersos a una operación conectada.</h3><p class="case-intro">Una empresa de tecnología sin plataforma interna centralizada necesitaba ordenar cómo interactúan ventas, operación y administración. La Intranet SAI se está desarrollando desde cero para convertir trabajo manual y seguimiento fragmentado en un sistema común, visible y listo para evolucionar con el negocio.</p><div class="details"><div class="detail"><span>RETO</span><p>Información y tareas repartidas entre personas, áreas y herramientas sin un punto operativo común.</p></div><div class="detail"><span>ENFOQUE</span><p>Levantamiento de necesidades, diseño de módulos y automatización desde la realidad diaria de cada área.</p></div><div class="detail"><span>DIRECCIÓN</span><p>Una base escalable para operar con orden, trazabilidad y mejores decisiones.</p></div></div><div class="tags"><span class="tag">VENTAS</span><span class="tag">OPERACIÓN</span><span class="tag">ADMINISTRACIÓN</span><span class="tag">AUTOMATIZACIÓN</span></div></div></article>
+      <article class="case"><div><p class="index">CASO_02</p><p class="case-meta">Modernización de infraestructura<br>Completado</p></div><div><h3>Migración de 10 servidores: de infraestructura física a una base AWS preparada para crecer.</h3><p class="case-intro">La transición no consistía solo en mover servidores. Requirió entender dependencias, definir una estrategia segura y validar cada fase para llevar la operación a AWS con una arquitectura más flexible, administrable y preparada para el siguiente nivel.</p><div class="details"><div class="detail"><span>DIAGNÓSTICO</span><p>Inventario de servidores, cargas de trabajo y dependencias antes de planear cualquier cambio.</p></div><div class="detail"><span>EJECUCIÓN</span><p>Diseño de red, accesos, seguridad, ventanas de cambio y validaciones de puesta en marcha.</p></div><div class="detail"><span>RESULTADO</span><p>Diez servidores migrados a AWS con continuidad operativa y una plataforma más gestionable.</p></div></div><div class="tags"><span class="tag">AWS</span><span class="tag">10 SERVIDORES</span><span class="tag">MIGRACIÓN CLOUD</span><span class="tag">CONTINUIDAD</span></div></div></article>
+    </div></section>
+    <section class="shell" id="metodo"><div class="heading"><p class="eyebrow">Método de trabajo</p><h2>Menos improvisación. <span class="gradient">Más decisiones con contexto.</span></h2><p>Cada proyecto empieza por entender qué está deteniendo la operación, no por elegir una tecnología de moda.</p></div><div class="method"><article class="step"><span class="step-no">01</span><h3>Entender</h3><p>Reviso la operación, sus dependencias y los puntos donde el equipo pierde tiempo o asume riesgos.</p></article><article class="step"><span class="step-no">02</span><h3>Diseñar</h3><p>Defino una ruta técnica ejecutable: arquitectura, seguridad, prioridades y criterios de validación.</p></article><article class="step"><span class="step-no">03</span><h3>Implementar</h3><p>Construyo, migro o automatizo por etapas, cuidando continuidad y adopción por parte de quienes usan la solución.</p></article><article class="step"><span class="step-no">04</span><h3>Estabilizar</h3><p>Documento, valido y dejo una base que el negocio puede operar, mantener y escalar con claridad.</p></article></div></section>
+    <section class="shell" aria-labelledby="stack-title"><div class="stack"><div class="stack-intro"><p class="eyebrow">Herramientas al servicio del resultado</p><h3 id="stack-title">Tecnología con propósito.</h3><p>No se trata de usar todo. Se trata de elegir lo necesario para que la solución sea segura, mantenible y útil desde el primer día.</p></div><div class="stack-list"><span>AWS</span><span>Microsoft Azure</span><span>Windows Server / Active Directory</span><span>Linux</span><span>SQL Server</span><span>MySQL / MariaDB</span><span>Python</span><span>C# / .NET</span><span>PowerShell</span><span>Bash</span><span>IIS</span><span>Docker</span><span>Fortinet</span><span>VPN / IPsec</span><span>Git / GitHub</span><span>APIs REST</span></div></div></section>
+    <section class="contact shell" id="contacto"><p class="eyebrow">Contacto directo</p><h2>¿Tu operación ya rebasó las herramientas que tiene hoy?</h2><p>Estoy a tus órdenes para proyectos de infraestructura, cloud, automatización y seguridad. Hablemos de qué necesita la operación para avanzar con control.</p><div class="contact-options"><a class="contact-link" href="https://wa.me/525580767394" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp directo</a><a class="contact-link" href="mailto:lalvarez@micr-sai.com.mx"><i class="ti ti-mail" aria-hidden="true"></i> lalvarez@micr-sai.com.mx</a><a class="contact-link" href="https://www.linkedin.com/in/luis-alvarez-28207b20b/" target="_blank" rel="noopener noreferrer"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</a></div></section>
+  </main>
+  <footer><div class="shell footer-inner"><span>© 2026 LUIS ALVAREZ / SAI</span><span>CDMX, MÉXICO · SISTEMAS PARA OPERACIÓN REAL</span></div></footer>
+  <script>
+    const canvas = document.getElementById('matrix-canvas'); const ctx = canvas.getContext('2d'); const fontSize = 14; let drops = [];
+    function resizeCanvas(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; drops=Array(Math.floor(canvas.width/fontSize)).fill(1); }
+    function drawMatrix(){ ctx.fillStyle='rgba(5, 8, 15, 0.08)'; ctx.fillRect(0,0,canvas.width,canvas.height); ctx.fillStyle='#2ae9ff'; ctx.font=fontSize+'px "DM Mono", monospace'; for(let i=0;i<drops.length;i++){ ctx.fillText(Math.random()>.5?'1':'0',i*fontSize,drops[i]*fontSize); if(drops[i]*fontSize>canvas.height&&Math.random()>.975)drops[i]=0; drops[i]++; } }
+    resizeCanvas(); window.addEventListener('resize',resizeCanvas); setInterval(drawMatrix,40);
+  </script>
 </body>
 </html>
